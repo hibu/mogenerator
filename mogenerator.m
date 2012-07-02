@@ -365,6 +365,11 @@ NSString	*gCustomBaseClassForced;
     return NO;
 }
 
+- (NSString*)serializationName {
+	NSString* customKey = [[self userInfo] objectForKey:@"serializationAlias"];
+	return (customKey.length > 0) ? customKey : [self name];
+}
+
 @end
 
 @implementation NSRelationshipDescription (collectionClassName)
