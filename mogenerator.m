@@ -370,6 +370,40 @@ NSString	*gCustomBaseClassForced;
 	return (customKey.length > 0) ? customKey : [self name];
 }
 
+- (NSString*)equivalentJavaType {
+	switch ([self attributeType]) {
+		case NSUndefinedAttributeType:
+			return @"Object";
+		case NSInteger16AttributeType:
+			return @"short";
+		case NSInteger32AttributeType:
+			return @"int";
+		case NSInteger64AttributeType:
+			return @"long";
+		case NSDecimalAttributeType:
+			return @"Decimal";
+		case NSDoubleAttributeType:
+			return @"double";
+		case NSFloatAttributeType:
+			return @"float";
+		case NSStringAttributeType:
+			return @"String";
+		case NSBooleanAttributeType:
+			return @"boolean";
+		case NSDateAttributeType:
+			return @"Date";
+		case NSBinaryDataAttributeType:
+			return @"Object";
+		case NSTransformableAttributeType:
+			return @"Object";				// This seems incorrect.
+		case NSObjectIDAttributeType:
+			return [self objectAttributeClassName];
+		default:
+			return nil;
+	}
+	return nil;
+}
+
 @end
 
 @implementation NSRelationshipDescription (collectionClassName)

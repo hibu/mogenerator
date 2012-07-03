@@ -39,6 +39,7 @@
 - (BOOL)hasTransformableAttributeType;
 - (BOOL)isReadonly;
 - (NSString*)serializationAlias;
+- (NSString*)equivalentJavaType;		// This could clearly be generalised
 @end
 
 @interface NSRelationshipDescription (collectionClassName)
