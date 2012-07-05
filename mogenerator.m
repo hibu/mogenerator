@@ -375,7 +375,7 @@ NSString	*gCustomBaseClassForced;
 		case NSUndefinedAttributeType:
 			return @"Object";
 		case NSInteger16AttributeType:
-			return @"short";
+			return @"int";
 		case NSInteger32AttributeType:
 			return @"int";
 		case NSInteger64AttributeType:
@@ -385,7 +385,7 @@ NSString	*gCustomBaseClassForced;
 		case NSDoubleAttributeType:
 			return @"double";
 		case NSFloatAttributeType:
-			return @"float";
+			return @"double";
 		case NSStringAttributeType:
 			return @"String";
 		case NSBooleanAttributeType:
