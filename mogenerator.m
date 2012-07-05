@@ -424,6 +424,15 @@ NSString	*gCustomBaseClassForced;
     }
 }
 
+- (BOOL)hasSerializationTypeKey {
+	return ([self serializationTypeKey] != nil);
+}
+
+- (NSString*)serializationTypeKey {
+	NSString* customKey = [[self userInfo] objectForKey:@"serializationTypeKey"];
+	return (customKey.length > 0) ? customKey : nil;
+}
+
 @end
 
 @implementation NSString (camelCaseString)

@@ -38,7 +38,7 @@
 - (NSString*)objectAttributeType;
 - (BOOL)hasTransformableAttributeType;
 - (BOOL)isReadonly;
-- (NSString*)serializationAlias;
+- (NSString*)serializationName;
 - (NSString*)equivalentJavaType;		// This could clearly be generalised
 @end
 
@@ -46,6 +46,8 @@
 - (NSString*)mutableCollectionClassName;
 - (NSString*)immutableCollectionClassName;
 - (BOOL)jr_isOrdered;
+- (BOOL)hasSerializationTypeKey;
+- (NSString*)serializationTypeKey;
 @end
 @interface NSObject (JustHereToSuppressIsOrderedNotImplementedCompilerWarning)
 - (BOOL)isOrdered;
