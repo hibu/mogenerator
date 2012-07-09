@@ -26,6 +26,7 @@
 - (NSString*)forcedCustomBaseClass;
 - (void)_processPredicate:(NSPredicate*)predicate_ bindings:(NSMutableArray*)bindings_;
 - (NSArray*)prettyFetchRequests;
+- (NSDictionary*)documentation;
 @end
 
 @interface NSAttributeDescription (typing)
@@ -40,6 +41,7 @@
 - (BOOL)isReadonly;
 - (NSString*)serializationName;
 - (NSString*)equivalentJavaType;		// This could clearly be generalised
+- (NSDictionary*)documentation;
 @end
 
 @interface NSRelationshipDescription (collectionClassName)
@@ -48,7 +50,9 @@
 - (BOOL)jr_isOrdered;
 - (BOOL)hasSerializationTypeKey;
 - (NSString*)serializationTypeKey;
+- (NSDictionary*)documentation;
 @end
+
 @interface NSObject (JustHereToSuppressIsOrderedNotImplementedCompilerWarning)
 - (BOOL)isOrdered;
 @end

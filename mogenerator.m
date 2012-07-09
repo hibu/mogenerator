@@ -12,6 +12,8 @@ static NSString * const kTemplateVar = @"TemplateVar";
 NSString	*gCustomBaseClass;
 NSString	*gCustomBaseClassForced;
 
+static NSString * const kUserInfoDocumentationKeyPrefix = @"@doc-";
+
 @interface NSEntityDescription (fetchedPropertiesAdditions)
 - (NSDictionary *)fetchedPropertiesByName;
 @end
@@ -236,6 +238,20 @@ NSString	*gCustomBaseClassForced;
 	}
 	return result;
 }
+
+- (NSDictionary*)documentation {
+	NSMutableDictionary* documentation = [[NSMutableDictionary alloc] initWithCapacity:2];
+	[[self userInfo] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		if([key hasPrefix:kUserInfoDocumentationKeyPrefix] && [key length] > kUserInfoDocumentationKeyPrefix.length) {
+			[documentation setObject:obj forKey:[key substringFromIndex:kUserInfoDocumentationKeyPrefix.length]];
+		}
+	}];
+	
+	NSDictionary* copyDoc = [[documentation copy] autorelease];
+	[documentation release];
+	return copyDoc;
+}
+
 @end
 
 @implementation NSAttributeDescription (typing)
@@ -404,6 +420,19 @@ NSString	*gCustomBaseClassForced;
 	return nil;
 }
 
+- (NSDictionary*)documentation {
+	NSMutableDictionary* documentation = [[NSMutableDictionary alloc] initWithCapacity:2];
+	[[self userInfo] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		if([key hasPrefix:kUserInfoDocumentationKeyPrefix] && [key length] > kUserInfoDocumentationKeyPrefix.length) {
+			[documentation setObject:obj forKey:[key substringFromIndex:kUserInfoDocumentationKeyPrefix.length]];
+		}
+	}];
+	
+	NSDictionary* copyDoc = [[documentation copy] autorelease];
+	[documentation release];
+	return copyDoc;
+}
+
 @end
 
 @implementation NSRelationshipDescription (collectionClassName)
@@ -431,6 +460,19 @@ NSString	*gCustomBaseClassForced;
 - (NSString*)serializationTypeKey {
 	NSString* customKey = [[self userInfo] objectForKey:@"serializationTypeKey"];
 	return (customKey.length > 0) ? customKey : nil;
+}
+
+- (NSDictionary*)documentation {
+	NSMutableDictionary* documentation = [[NSMutableDictionary alloc] initWithCapacity:2];
+	[[self userInfo] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		if([key hasPrefix:kUserInfoDocumentationKeyPrefix] && [key length] > kUserInfoDocumentationKeyPrefix.length) {
+			[documentation setObject:obj forKey:[key substringFromIndex:kUserInfoDocumentationKeyPrefix.length]];
+		}
+	}];
+	
+	NSDictionary* copyDoc = [[documentation copy] autorelease];
+	[documentation release];
+	return copyDoc;
 }
 
 @end
