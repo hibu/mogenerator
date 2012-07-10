@@ -49,6 +49,9 @@ enum
 - (NSEnumerator *)wordEnumerator;
 - (NSString *)firstWord;
 
+/*" Getting "lines" "*/
+- (NSArray*)lineArray;
+
 /*" Bulk replacing "*/
 - stringByReplacingEveryOccurrenceOfString:(NSString *)aString
                                 withString:(NSString *)replaceString;

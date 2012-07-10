@@ -218,6 +218,18 @@
     return [self wordNum:0];
 }
 
+- (NSArray*)lineArray 
+{
+    NSMutableArray* lines = [[NSMutableArray alloc] init];
+    [self enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
+        [lines addObject:line];
+    }];
+    NSArray* linesArray = [lines copy];
+    [lines release];
+    return [linesArray autorelease];
+}
+
+
 - stringByReplacingEveryOccurrenceOfString:(NSString *)searchString
                                 withString:(NSString *)replaceString
 {
