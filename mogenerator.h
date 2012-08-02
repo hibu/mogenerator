@@ -48,6 +48,7 @@
 - (NSString*)mutableCollectionClassName;
 - (NSString*)immutableCollectionClassName;
 - (BOOL)jr_isOrdered;
+- (NSString*)serializationName;
 - (BOOL)hasSerializationTypeKey;
 - (NSString*)serializationTypeKey;
 - (NSDictionary*)documentation;

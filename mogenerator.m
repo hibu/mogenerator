@@ -453,6 +453,11 @@ static NSString * const kUserInfoDocumentationKeyPrefix = @"@doc-";
     }
 }
 
+- (NSString*)serializationName {
+	NSString* customKey = [[self userInfo] objectForKey:@"@serializationAlias"];
+	return (customKey.length > 0) ? customKey : [self name];
+}
+
 - (BOOL)hasSerializationTypeKey {
 	return ([self serializationTypeKey] != nil);
 }
